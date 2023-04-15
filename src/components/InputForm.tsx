@@ -1,8 +1,9 @@
-// <br> means line break, it does not require a closing tag.
+// <br> means line break.
 import React, { useState } from "react";
 
 function InputForm() {
   const [inputValue, setInputValue] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -17,26 +18,33 @@ function InputForm() {
     setInputValue(event.target.value);
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  // Make React update a variable by chaining a state variable into it.
+  const placeholderText = isFocused ? "" : "Enter your prompt";
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Input value:
-        <input type="text" value={inputValue} onChange={handleChange} />
+        Prompt:
+        <input
+          type="text"
+          value={inputValue}
+          placeholder={placeholderText}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
       </label>
       <button type="submit">Submit</button>
     </form>
   );
 }
-
-//   return (
-//     <>
-//     <form>
-// 		<label for="text-input">Enter Text:</label>
-// 		<input type="text" id="text-input" name="text-input"><br><br>
-// 		<button type="submit">Submit</button>
-// 	</form>
-//     </>
-//   );
-// }
 
 export default InputForm;
