@@ -1,5 +1,5 @@
 // <br> means line break.
-import React, { FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 interface Props {
   placeholderText: string;
@@ -21,13 +21,7 @@ function ChatInput({ placeholderText }: Props) {
     setInputValue("");
   };
 
-  const handleChange = (event: {
-    // TODO: I do not entirely understand, why this prop is being
-    // passed to this function. I guess we need this function to
-    // update the state of the input value, every time the text
-    // in the chat input changes.
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
