@@ -44,12 +44,16 @@ function ChatInput({ placeholderText }: Props) {
   // form reacts to the state.
   const placeholderTextToggle = isFocused ? "" : placeholderText;
 
+  // The 'htmlfor' attribute associates a label with a particular
+  // input, when a user clicks on the label, the browser automatically
+  // focuses on the associated input.
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Prompt:
+      <label htmlFor="prompt">
+        Prompt
         <input
           type="text"
+          id="prompt"
           value={inputValue}
           placeholder={placeholderTextToggle}
           onChange={handleChange}
