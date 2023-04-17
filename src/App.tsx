@@ -1,11 +1,12 @@
 import Title from "./components/Title";
-import InputForm from "./components/InputForm";
+import ChatInput from "./components/ChatInput";
 
 function App() {
+  const chatInputPlaceholderText = "Enter your prompt here...";
   return (
     <>
       <Title />
-      <InputForm />
+      <ChatInput placeholderText={chatInputPlaceholderText} />
     </>
   );
 }
