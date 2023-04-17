@@ -1,5 +1,5 @@
 // <br> means line break.
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 interface Props {
   placeholderText: string;
@@ -11,7 +11,7 @@ function ChatInput({ placeholderText }: Props) {
   // The ChatInput component starts as not focused.
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: FormEvent) => {
     // Prevent the default baheviour of a button, e.g. redirecting
     // to another page after pressing the button.
     event.preventDefault();
