@@ -3,9 +3,10 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 
 interface Props {
   placeholderText: string;
+  onSubmit: () => void;
 }
 
-function ChatInput({ placeholderText }: Props) {
+function ChatInput({ placeholderText, onSubmit }: Props) {
   // The text value written by the user.
   const [inputValue, setInputValue] = useState("");
   // The ChatInput component starts as not focused.
@@ -15,7 +16,10 @@ function ChatInput({ placeholderText }: Props) {
     // Prevent the default baheviour of a button, e.g. redirecting
     // to another page after pressing the button.
     event.preventDefault();
-    console.log("Submitted value:", inputValue);
+
+    onSubmit();
+    // console.log("Submitted value:", inputValue);
+
     // Reset input value after submission, i.e. the chat input is
     // again an empty string.
     setInputValue("");
