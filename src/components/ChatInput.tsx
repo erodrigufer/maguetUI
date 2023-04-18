@@ -50,6 +50,7 @@ function ChatInput({ placeholderText, onSubmit }: Props) {
       <label htmlFor="prompt">
         Prompt
         <input
+          className="chatInput"
           type="text"
           id="prompt"
           value={inputValue}

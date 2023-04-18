@@ -3,3 +3,8 @@
     color: red;
     padding-left: 1em;
 }
+
+.chatInput{
+    width: 75%;
+    height: 5em;
+}

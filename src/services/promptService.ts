@@ -8,4 +8,4 @@ export interface response {
     responseText: string,
 }
 
-export default create('/prompt');
+export default create('/v1/prompt');

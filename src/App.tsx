@@ -9,7 +9,8 @@ import TestText from "./testText";
 
 function App() {
   const chatInputPlaceholderText = "Enter your prompt here...";
-  const [promptRes, setPromptRes] = useState<response>();
+  // TODO: Change type back to resp, instead of any.
+  const [promptRes, setPromptRes] = useState<any>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -21,6 +22,7 @@ function App() {
     request
       .then((res) => {
         setPromptRes(res.data);
+        console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -37,8 +39,8 @@ function App() {
         placeholderText={chatInputPlaceholderText}
         onSubmit={onSubmit}
       />
-      <ResponseBox responseText="hola!">{/* <TestText /> */}</ResponseBox>
       {error && <Error errorMessage={error} />}
+      <ResponseBox responseText="hola!">{/* <TestText /> */}</ResponseBox>
     </>
   );
 }

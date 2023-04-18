@@ -1,7 +1,8 @@
 import axios, { CanceledError } from "axios";
 
 export default axios.create({
-    baseURL: 'endpoint.com',
+    baseURL: 'http://localhost:8000',
+    withCredentials: false,
     // headers: {
     //     'api-key': 'key',
     // }
