@@ -1,7 +1,7 @@
 # Ignore vim *.swp files
 *.swp
 
-./maguetServer
+maguetServer
 # Binaries for programs and plugins
 *.exe
 *.exe~
