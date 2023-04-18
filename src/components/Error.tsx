@@ -8,13 +8,11 @@ interface Props {
 const Error = (props: Props) => {
   return (
     <>
-      {props.errorMessage && (
-        <div className="errorMessage">
-          <p> Error</p>
-          <p>While requesting a response, an error took place: </p>
-          <p>{props.errorMessage}</p>
-        </div>
-      )}
+      <div className="errorMessage">
+        <p> Error</p>
+        <p>While requesting a response, an error took place: </p>
+        <p>{props.errorMessage}</p>
+      </div>
     </>
   );
 };

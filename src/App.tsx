@@ -38,7 +38,7 @@ function App() {
         onSubmit={onSubmit}
       />
       <ResponseBox responseText="hola!">{/* <TestText /> */}</ResponseBox>
-      <Error errorMessage={error} />
+      {error && <Error errorMessage={error} />}
     </>
   );
 }
