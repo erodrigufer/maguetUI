@@ -22,6 +22,7 @@ function App() {
     request
       .then((res) => {
         setPromptRes(res.data);
+        setError("");
         console.log(res.data);
         setLoading(false);
       })
@@ -35,12 +36,15 @@ function App() {
   return (
     <>
       <Title />
+      <h2> ChatGPT on a budget!</h2>
       <ChatInput
         placeholderText={chatInputPlaceholderText}
         onSubmit={onSubmit}
       />
       {error && <Error errorMessage={error} />}
-      <ResponseBox responseText="hola!">{/* <TestText /> */}</ResponseBox>
+      <ResponseBox responseText={promptRes.promptText}>
+        {/* <TestText /> */}
+      </ResponseBox>
     </>
   );
 }
