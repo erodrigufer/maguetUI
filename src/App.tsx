@@ -4,7 +4,7 @@ import ResponseBox from "./components/ResponseBox";
 import Error from "./components/Error";
 import { CanceledError } from "./services/apiClient";
 import promptService, { prompt, response } from "./services/promptService";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TestText from "./testText";
 
 function App() {
