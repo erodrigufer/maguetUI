@@ -3,7 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 
 interface Props {
   placeholderText: string;
-  onSubmit: () => void;
+  onSubmit: (promptText: string) => void;
 }
 
 function ChatInput({ placeholderText, onSubmit }: Props) {
@@ -17,7 +17,7 @@ function ChatInput({ placeholderText, onSubmit }: Props) {
     // to another page after pressing the button.
     event.preventDefault();
 
-    onSubmit();
+    onSubmit(inputValue);
     // console.log("Submitted value:", inputValue);
 
     // Reset input value after submission, i.e. the chat input is
