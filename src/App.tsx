@@ -10,7 +10,7 @@ import TestText from "./testText";
 function App() {
   const chatInputPlaceholderText = "Enter your prompt here...";
   // TODO: Change type back to resp, instead of any.
-  const [promptRes, setPromptRes] = useState<any>();
+  const [promptRes, setPromptRes] = useState<response>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -42,7 +42,7 @@ function App() {
         onSubmit={onSubmit}
       />
       {error && <Error errorMessage={error} />}
-      <ResponseBox responseText={promptRes.promptText}>
+      <ResponseBox responseText={promptRes?.responseText}>
         {/* <TestText /> */}
       </ResponseBox>
     </>

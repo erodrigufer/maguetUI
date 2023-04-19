@@ -27,7 +27,7 @@ func writeJSON(w http.ResponseWriter, status int, data interface{}) error {
 }
 
 // readJSON, decode JSON from HTTP request body into dst data type.
-func (app *Application) readJSON(w http.ResponseWriter, r *http.Request, dst interface{}) error {
+func readJSON(w http.ResponseWriter, r *http.Request, dst interface{}) error {
 	// Limit the size of the request body to 1MB.
 	maxBytes := 1_048_576
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))

@@ -24,5 +24,5 @@ clean:
 	$(GOCLEAN)
 	rm -f $(BINARY_NAME)
 
-install: build
-	cp ./$(BINARY_NAME) ~/bin/
+run: build
+	./$(BINARY_NAME)

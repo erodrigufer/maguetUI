@@ -3,7 +3,7 @@ import TestText from "../testText";
 import { ReactNode } from "react";
 
 interface Props {
-  responseText: string;
+  responseText: string | undefined;
   children?: ReactNode;
 }
 
@@ -11,7 +11,7 @@ function ResponseBox(props: Props) {
   return (
     <>
       <div className="responseBox">
-        {props.responseText}
+        {props?.responseText}
         {props?.children}
       </div>
     </>

@@ -2,6 +2,7 @@
 *.swp
 
 maguetServer
+maguetServerEcho
 # Binaries for programs and plugins
 *.exe
 *.exe~

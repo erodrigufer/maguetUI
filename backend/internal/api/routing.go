@@ -11,8 +11,9 @@ func (app *Application) routes() *httprouter.Router {
 
 	router := httprouter.New()
 
-	router.HandlerFunc(http.MethodGet, "/v1/prompt", app.getPrompt)
-	router.HandlerFunc(http.MethodPost, "/v1/prompt", app.createNewPrompt)
+	router.HandlerFunc(http.MethodGet, "/v1/test", app.testGetReq)
+	router.HandlerFunc(http.MethodPost, "/v1/echo", app.echoResponse)
+	router.HandlerFunc(http.MethodPost, "/v1/prompt", app.handlePrompt)
 
 	router.GlobalOPTIONS = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Access-Control-Request-Method") != "" {

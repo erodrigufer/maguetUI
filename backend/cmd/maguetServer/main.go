@@ -1,6 +1,8 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/erodrigufer/maguetUI/backend/internal/api"
 )
 
@@ -13,6 +15,8 @@ func main() {
 	app.InfoLog.Printf("Starting server at port %d", port)
 
 	err := app.Srv.ListenAndServe()
-	app.ErrorLog.Fatal(err)
+	if err != http.ErrServerClosed {
+		app.ErrorLog.Fatal(err)
+	}
 
 }
