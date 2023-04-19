@@ -4,10 +4,15 @@ import (
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+	"github.com/justinas/alice"
 )
 
 // routes, define the routing of the server.
-func (app *Application) routes() *httprouter.Router {
+func (app *Application) routes() http.Handler {
+
+	// TODO: maybe? the recover panic can be directly set at the router as a
+	// field of the router's struct.
+	standardMiddleware := alice.New(app.recoverPanic, app.logRequest, secureHeaders)
 
 	router := httprouter.New()
 
@@ -31,5 +36,5 @@ func (app *Application) routes() *httprouter.Router {
 		w.WriteHeader(http.StatusNoContent)
 	})
 
-	return router
+	return standardMiddleware.Then(router)
 }

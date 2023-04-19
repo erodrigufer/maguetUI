@@ -36,6 +36,7 @@ func (app *Application) handlePrompt(w http.ResponseWriter, r *http.Request) {
 		app.serverError(w, err)
 		return
 	}
+	app.InfoLog.Print("Received response for completion from OpenAI API.")
 
 	err = sendPromptResp(w, resp)
 	if err != nil {
