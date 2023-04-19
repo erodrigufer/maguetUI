@@ -36,7 +36,6 @@ function App() {
   return (
     <>
       <Title />
-      <h2> ChatGPT on a budget!</h2>
       <ChatInput
         placeholderText={chatInputPlaceholderText}
         onSubmit={onSubmit}

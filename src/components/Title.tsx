@@ -1,5 +1,5 @@
 function Title() {
-  const name = "maguet UI";
+  const name = "CLM (Cheap Language Model) — ChatGPT on a budget!";
   return <h1>{name}</h1>;
 }
 
