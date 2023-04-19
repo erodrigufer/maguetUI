@@ -1,6 +1,6 @@
 /* Scrollable response box with text */
 .responseBox{
-    height: 200px; 
+    height: 60%; 
     overflow-y: scroll;
     margin: 1em;
     border: 1.2px solid black;

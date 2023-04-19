@@ -1,6 +1,7 @@
 import "./responseBox.css";
-import TestText from "../testText";
+import TestText from "../TestText";
 import { ReactNode } from "react";
+import Md2HTML from "./Md2HTML";
 
 interface Props {
   responseText: string | undefined;
@@ -11,7 +12,7 @@ function ResponseBox(props: Props) {
   return (
     <>
       <div className="responseBox">
-        {props?.responseText}
+        {props?.responseText && <Md2HTML markdownText={props.responseText} />}
         {props?.children}
       </div>
     </>

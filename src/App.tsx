@@ -5,7 +5,7 @@ import Error from "./components/Error";
 import { CanceledError } from "./services/apiClient";
 import promptService, { prompt, response } from "./services/promptService";
 import { useState } from "react";
-import TestText from "./testText";
+import TestText from "./TestText";
 
 function App() {
   const chatInputPlaceholderText = "Enter your prompt here...";
