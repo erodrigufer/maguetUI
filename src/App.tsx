@@ -6,6 +6,8 @@ import { CanceledError } from "./services/apiClient";
 import promptService, { prompt, response } from "./services/promptService";
 import { useState } from "react";
 import TestText from "./TestText";
+import { Flex, Grid, GridItem, HStack, Spacer } from "@chakra-ui/react";
+import Footer from "./components/Footer";
 
 function App() {
   const chatInputPlaceholderText = "Enter your prompt here...";
@@ -35,16 +37,38 @@ function App() {
 
   return (
     <>
-      <Title />
-      <ChatInput
-        placeholderText={chatInputPlaceholderText}
-        isLoading={isLoading}
-        onSubmit={onSubmit}
-      />
-      {error && <Error errorMessage={error} />}
-      <ResponseBox responseText={promptRes?.responseText}>
-        {/* <TestText /> */}
-      </ResponseBox>
+      <Grid templateAreas={`"header" "main" "footer"`} gap={4}>
+        <GridItem area={"header"}>
+          <Title />
+        </GridItem>
+
+        <Spacer />
+
+        <GridItem area={"main"} pr={3} pl={3}>
+          {/* Create a gap between the components in main, align them in a column,
+          we have to use Flex because VStack does not use the whole available space
+          of the parent component, so, for example, the input would not expand to
+          cover the whole horizontal space if we use VStack instead of Flex.
+          */}
+          <Flex direction="column" gap={4}>
+            <ChatInput
+              placeholderText={chatInputPlaceholderText}
+              isLoading={isLoading}
+              onSubmit={onSubmit}
+            />
+            {error && <Error errorMessage={error} />}
+            <ResponseBox responseText={promptRes?.responseText}>
+              {/* <TestText /> */}
+            </ResponseBox>
+          </Flex>
+        </GridItem>
+
+        <GridItem area={"footer"}>
+          <HStack justify="space-evenly">
+            <Footer />
+          </HStack>
+        </GridItem>
+      </Grid>
     </>
   );
 }

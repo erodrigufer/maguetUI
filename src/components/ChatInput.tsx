@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { Input, Button, HStack } from "@chakra-ui/react";
+import { Input, Button, HStack, Flex, Spacer } from "@chakra-ui/react";
 
 interface Props {
   placeholderText: string;
@@ -47,7 +47,7 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
   // focuses on the associated input.
   return (
     <form onSubmit={handleSubmit}>
-      <HStack>
+      <Flex gap={2}>
         <Input
           // className="chatInput"
           type="text"
@@ -66,7 +66,7 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
         >
           Submit
         </Button>
-      </HStack>
+      </Flex>
     </form>
   );
 }

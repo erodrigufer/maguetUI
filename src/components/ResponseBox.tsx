@@ -13,6 +13,7 @@ function ResponseBox(props: Props) {
   return (
     <>
       <Container
+        p={2}
         maxW="container.lg"
         maxH="25em"
         borderWidth="1px"
