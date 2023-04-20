@@ -1,5 +1,3 @@
-import "./responseBox.css";
-import TestText from "../TestText";
 import { ReactNode } from "react";
 import Md2HTML from "./Md2HTML";
 import { Container } from "@chakra-ui/react";

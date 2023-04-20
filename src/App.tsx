@@ -5,16 +5,16 @@ import Error from "./components/Error";
 import { CanceledError } from "./services/apiClient";
 import promptService, { prompt, response } from "./services/promptService";
 import { useState } from "react";
-import TestText from "./TestText";
 import { Flex, Grid, GridItem, HStack, Spacer } from "@chakra-ui/react";
 import Footer from "./components/Footer";
 
 function App() {
-  const chatInputPlaceholderText = "Enter your prompt here...";
-  // TODO: Change type back to resp, instead of any.
+  const chatInputPlaceholderText = "Enter your ChatGPT prompt here...";
   const [promptRes, setPromptRes] = useState<response>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
+
+  const title = "Cheap Language Model (CLM)";
 
   const onSubmit = (promptText: string) => {
     setLoading(true);
@@ -39,7 +39,7 @@ function App() {
     <>
       <Grid templateAreas={`"header" "main" "footer"`} gap={4}>
         <GridItem area={"header"}>
-          <Title />
+          <Title title={title} />
         </GridItem>
 
         <Spacer />

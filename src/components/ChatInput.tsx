@@ -1,5 +1,6 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Input, Button, HStack, Flex, Spacer } from "@chakra-ui/react";
+import RadioAPIversion from "./RadioAPIversion";
 
 interface Props {
   placeholderText: string;
@@ -67,6 +68,7 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
           Submit
         </Button>
       </Flex>
+      <RadioAPIversion />
     </form>
   );
 }

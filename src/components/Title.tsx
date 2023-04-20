@@ -1,8 +1,17 @@
-import { Heading } from "@chakra-ui/react";
+import { HStack, Heading } from "@chakra-ui/react";
 
-function Title() {
-  const name = "CLM (Cheap Language Model) — ChatGPT on a budget!";
-  return <Heading>{name}</Heading>;
+interface Props {
+  title: string;
+}
+
+function Title({ title }: Props) {
+  return (
+    <>
+      <HStack justify="space-evenly">
+        <Heading>{title}</Heading>;
+      </HStack>
+    </>
+  );
 }
 
 export default Title;
