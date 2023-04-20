@@ -1,5 +1,5 @@
-// <br> means line break.
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Input, Button, HStack } from "@chakra-ui/react";
 
 interface Props {
   placeholderText: string;
@@ -13,12 +13,11 @@ function ChatInput({ placeholderText, onSubmit }: Props) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (event: FormEvent) => {
-    // Prevent the default baheviour of a button, e.g. redirecting
+    // Prevent the default behaviour of a button, e.g. redirecting
     // to another page after pressing the button.
     event.preventDefault();
 
     onSubmit(inputValue);
-    // console.log("Submitted value:", inputValue);
 
     // Reset input value after submission, i.e. the chat input is
     // again an empty string.
@@ -47,20 +46,21 @@ function ChatInput({ placeholderText, onSubmit }: Props) {
   // focuses on the associated input.
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="prompt">
-        Prompt
-        <input
-          className="chatInput"
+      <HStack>
+        <Input
+          // className="chatInput"
           type="text"
-          id="prompt"
           value={inputValue}
           placeholder={placeholderTextToggle}
+          size="lg"
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </label>
-      <button type="submit">Submit</button>
+        <Button type="submit" size="lg">
+          Submit
+        </Button>
+      </HStack>
     </form>
   );
 }
