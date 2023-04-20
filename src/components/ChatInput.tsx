@@ -3,10 +3,11 @@ import { Input, Button, HStack } from "@chakra-ui/react";
 
 interface Props {
   placeholderText: string;
+  isLoading: boolean;
   onSubmit: (promptText: string) => void;
 }
 
-function ChatInput({ placeholderText, onSubmit }: Props) {
+function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
   // The text value written by the user.
   const [inputValue, setInputValue] = useState("");
   // The ChatInput component starts as not focused.
@@ -57,7 +58,12 @@ function ChatInput({ placeholderText, onSubmit }: Props) {
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        <Button type="submit" size="lg">
+        <Button
+          isLoading={isLoading}
+          loadingText="Processing"
+          type="submit"
+          size="lg"
+        >
           Submit
         </Button>
       </HStack>

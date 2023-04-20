@@ -13,8 +13,8 @@ function ResponseBox(props: Props) {
   return (
     <>
       <Container
-        maxW="container.md"
-        maxH="600px"
+        maxW="container.lg"
+        maxH="25em"
         borderWidth="1px"
         borderRadius="lg"
         overflowY="scroll"

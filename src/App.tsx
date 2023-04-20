@@ -38,6 +38,7 @@ function App() {
       <Title />
       <ChatInput
         placeholderText={chatInputPlaceholderText}
+        isLoading={isLoading}
         onSubmit={onSubmit}
       />
       {error && <Error errorMessage={error} />}
