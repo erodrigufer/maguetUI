@@ -1,5 +1,9 @@
-import React from "react";
-import "./components.css";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@chakra-ui/react";
 
 interface Props {
   errorMessage: string;
@@ -8,11 +12,13 @@ interface Props {
 const Error = (props: Props) => {
   return (
     <>
-      <div className="errorMessage">
-        <p> Error</p>
-        <p>While requesting a response, an error took place: </p>
-        <p>{props.errorMessage}</p>
-      </div>
+      <Alert status="error">
+        <AlertIcon />
+        {/* <AlertTitle></AlertTitle> */}
+        <AlertDescription>
+          There was an error processing your request: {props.errorMessage}
+        </AlertDescription>
+      </Alert>
     </>
   );
 };

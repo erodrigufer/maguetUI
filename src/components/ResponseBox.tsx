@@ -2,6 +2,7 @@ import "./responseBox.css";
 import TestText from "../TestText";
 import { ReactNode } from "react";
 import Md2HTML from "./Md2HTML";
+import { Container } from "@chakra-ui/react";
 
 interface Props {
   responseText: string | undefined;
@@ -11,10 +12,17 @@ interface Props {
 function ResponseBox(props: Props) {
   return (
     <>
-      <div className="responseBox">
+      <Container
+        maxW="container.md"
+        maxH="600px"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflowY="scroll"
+        shadow="md"
+      >
         {props?.responseText && <Md2HTML markdownText={props.responseText} />}
         {props?.children}
-      </div>
+      </Container>
     </>
   );
 }
