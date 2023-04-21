@@ -55,6 +55,7 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
           value={inputValue}
           placeholder={placeholderTextToggle}
           size="lg"
+          borderRadius={15}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}

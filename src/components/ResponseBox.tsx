@@ -12,6 +12,8 @@ function ResponseBox(props: Props) {
     <>
       <Container
         p={2}
+        pl={10}
+        pr={10}
         maxW="container.lg"
         maxH="25em"
         borderWidth="1px"
