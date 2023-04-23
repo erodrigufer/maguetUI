@@ -18,6 +18,7 @@ function App() {
 
   const onSubmit = (promptText: string) => {
     setLoading(true);
+    setError("");
     const { request, cancel } = promptService.create<prompt>({
       promptText: promptText,
     });
@@ -25,7 +26,6 @@ function App() {
       .then((res) => {
         setPromptRes(res.data);
         setError("");
-        console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
