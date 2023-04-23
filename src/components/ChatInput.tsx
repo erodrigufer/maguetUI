@@ -60,6 +60,7 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
         <Button
           isLoading={isLoading}
           loadingText="Processing"
+          colorScheme="purple"
           type="submit"
           size="lg"
         >
