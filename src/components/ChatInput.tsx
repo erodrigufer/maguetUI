@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { Input, Button, HStack, Flex, Spacer } from "@chakra-ui/react";
+import { FormEvent, SetStateAction, useState } from "react";
+import { Button, Flex, Textarea } from "@chakra-ui/react";
 import RadioAPIversion from "./RadioAPIversion";
 
 interface Props {
@@ -26,7 +26,9 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
     setInputValue("");
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setInputValue(event.target.value);
   };
 
@@ -43,15 +45,10 @@ function ChatInput({ placeholderText, isLoading, onSubmit }: Props) {
   // form reacts to the state.
   const placeholderTextToggle = isFocused ? "" : placeholderText;
 
-  // The 'htmlfor' attribute associates a label with a particular
-  // input, when a user clicks on the label, the browser automatically
-  // focuses on the associated input.
   return (
     <form onSubmit={handleSubmit}>
       <Flex gap={2}>
-        <Input
-          // className="chatInput"
-          type="text"
+        <Textarea
           value={inputValue}
           placeholder={placeholderTextToggle}
           size="lg"
