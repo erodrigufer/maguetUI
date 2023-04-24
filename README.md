@@ -1,4 +1,4 @@
-# maguet Web
+# maguet web
 
 `maguet web` is a web application that interacts with the OpenAI API, sends prompts to ChatGPT and displays their response in the web browser. 
 It is capable of parsing the Markdown received from the OpenAI API in order to display code with highlighted syntax.
