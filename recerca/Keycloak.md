@@ -129,3 +129,74 @@ To connect to the Keycloak admin panel running on a headless VPS in the cloud, y
 6. Once logged in, you can access the Keycloak admin panel and manage your realm, clients, users, and other settings.
 
 Note: If you are accessing the Keycloak admin panel from a remote location, make sure to configure your firewall and network settings to allow incoming traffic on port 8080.
+
+### Token validation with Golang
+To validate an authentication token received from a client with a Keycloak server, the backend typically needs to perform the following steps:
+
+1. Parse the token to extract its claims and signature.
+2. Retrieve the public key of the Keycloak server to verify the signature.
+3. Verify the token's expiration time and other claims to ensure it is still valid.
+4. Check if the token has the required roles or permissions to access the requested resource.
+
+Here is an example of a Go middleware that performs token validation using the Keycloak Go SDK:
+
+```go
+package main
+
+import (
+    "net/http"
+    "github.com/dgrijalva/jwt-go"
+    "github.com/keycloak/keycloak-go"
+)
+
+func ValidateToken(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        tokenString := r.Header.Get("Authorization")
+        if tokenString == "" {
+            http.Error(w, "Missing Authorization header", http.StatusUnauthorized)
+            return
+        }
+
+        token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+            // Retrieve the public key of the Keycloak server to verify the signature
+            keycloakConfig := keycloak.Config{
+                Realm: "myrealm",
+                AuthServerURL: "https://keycloak.example.com/auth",
+            }
+            keycloakClient := keycloak.NewClient(&keycloakConfig)
+            publicKey, err := keycloakClient.GetRealmPublicKey()
+            if err != nil {
+                return nil, err
+            }
+            return jwt.ParseRSAPublicKeyFromPEM([]byte(publicKey))
+        })
+        if err != nil {
+            http.Error(w, err.Error(), http.StatusUnauthorized)
+            return
+        }
+
+        claims, ok := token.Claims.(jwt.MapClaims)
+        if !ok || !token.Valid {
+            http.Error(w, "Invalid token", http.StatusUnauthorized)
+            return
+        }
+
+        // Check if the token has the required roles or permissions to access the requested resource
+        if !hasRequiredRoles(claims) {
+            http.Error(w, "Missing required roles", http.StatusForbidden)
+            return
+        }
+
+        // Token is valid and has the required roles, call the next middleware or handler
+        next.ServeHTTP(w, r)
+    })
+}
+
+func hasRequiredRoles(claims jwt.MapClaims) bool {
+    // Check if the token has the required roles or permissions to access the requested resource
+    // ...
+    return true
+}
+```
+
+This middleware first retrieves the token from the `Authorization` header of the HTTP request. It then uses the Keycloak Go SDK to retrieve the public key of the Keycloak server and parse the token's signature. If the signature is valid, it checks the token's expiration time and other claims to ensure it is still valid. Finally, it checks if the token has the required roles or permissions to access the requested resource, and calls the next middleware or handler if everything is valid. If any of these checks fail, it returns an HTTP error with the appropriate status code.
