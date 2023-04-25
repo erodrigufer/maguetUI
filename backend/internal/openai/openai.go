@@ -25,7 +25,7 @@ func NewClient(authToken string) *OpenAIClient {
 // RequestCompletion, request ChatGPT for a text completion.
 func (c *OpenAIClient) RequestCompletion(prompt string, temperature float32) (string, error) {
 	// Timeout for API call.
-	timeout, err := time.ParseDuration("45s")
+	timeout, err := time.ParseDuration("1m40s")
 	if err != nil {
 		return "", fmt.Errorf("error parsing time duration: %w", err)
 	}

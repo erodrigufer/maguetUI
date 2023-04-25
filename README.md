@@ -14,19 +14,17 @@ It uses the [maguet](https://github.com/erodrigufer/maguet) Go library to intera
 To run the web application in a dev environment, execute the following commands:
 
 ```
-npm install
 npm run dev
 ```
 
-Then, navigate to the `./backend` directory and execute:
-
-```
-make run
-```
-
-This will start the backend server.
+This will start both the backend server and the frontend application in your local network (localhost).
 
 The backend server requires a valid OpenAI API key. 
-You should provide your OpenAI API key to the backend by storing it at `~/.maguet.env` as `MAGUET_TOKEN=<your-api-key>`.
+You should provide your OpenAI API key to the backend by storing it at `${HOME}/.maguet.env` as `MAGUET_TOKEN=<your-api-key>`.
 
 ![Landing page](/img/noPrompt.png)
+
+## Requirements
+
+* go v1.20+
+* npm
