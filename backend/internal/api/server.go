@@ -10,7 +10,7 @@ import (
 // port, defines the port at which the server will listen.
 func (app *Application) newServer(port int) *http.Server {
 	srv := &http.Server{
-		Addr:         fmt.Sprintf(":%d", port),
+		Addr:         fmt.Sprintf("0.0.0.0:%d", port),
 		ErrorLog:     app.ErrorLog,
 		Handler:      app.routes(),
 		IdleTimeout:  time.Minute,

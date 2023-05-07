@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "server": "cd backend && make run",
-    "dev": "concurrently \"npm run server\" \"vite\"",
+    "dev": "concurrently \"npm run server\" \"vite --host 0.0.0.0\"",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
